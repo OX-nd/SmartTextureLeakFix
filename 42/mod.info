@@ -1,0 +1,14 @@
+name=Character Texture VRAM Leak Fix [ZombieBuddy]
+id=SmartTextureLeakFix
+author=syeon
+poster=poster.png
+description=Fixes a vanilla Build 42 video-memory leak: every time a character's clothing/body texture is rebuilt (blood, dirt, holes, colour changes - players and zombies alike), the game kept the old combined texture in VRAM. Long sessions fill VRAM, spill into system RAM and stutter or freeze. Client-side, nothing saved. Requires ZombieBuddy and approval of the Java JAR. Source included in 42/src.
+description=바닐라 B42 그래픽 메모리 누수 수정: 캐릭터(플레이어·좀비) 옷·몸 텍스처를 다시 합성할 때마다(피·흙·구멍·색 변경) 이전 합성 텍스처를 반납하지 않아 VRAM이 계속 쌓이던 문제를 고칩니다. 클라이언트 전용, 세이브에 아무것도 저장하지 않습니다. ZombieBuddy와 자바 파일 승인이 필요합니다.
+modversion=1.0
+pzversion=42.21
+versionMin=42.20
+require=\ZombieBuddy
+loadAfter=\ZombieBuddy
+javaJarFile=media/java/client/SmartTextureLeakFix.jar
+javaPkgName=smarttextureleakfix
+zbVersionMin=2.3.2

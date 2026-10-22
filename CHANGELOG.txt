@@ -1,0 +1,6 @@
+v1.0
+- First Workshop release.
+- Return the previous combined texture to the TextureCombiner pool before SmartTexture.calculate() rebuilds it.
+- JAR moved to media/java/client so dedicated servers skip it; reproducible build (no manifest, fixed entry date).
+- Checked against 42.21 game classes, PZ_Optimization and Project Viewpoint.
+- SHA-256 (JDK 25): a836e463a5563ce2d3630cd3edf1d1f65091dd35910a638cb7ac405d90658d27
