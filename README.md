@@ -81,9 +81,9 @@ Get-FileHash -Algorithm SHA256 "C:\Program Files (x86)\Steam\steamapps\workshop\
 The build is reproducible: no manifest and a fixed entry date, so the JAR bytes depend only
 on the compiled classes.
 
-Requirements: Windows, Project Zomboid (Build 42), ZombieBuddy subscribed, and a JDK 21-25
-(for example [Eclipse Temurin](https://adoptium.net)). The game's own `jre64` folder works
-too if it contains `javac.exe`.
+Requirements: Windows, Project Zomboid (Build 42), ZombieBuddy subscribed, and **JDK 25**
+(for example [Eclipse Temurin 25](https://adoptium.net)). Older JDKs cannot build it: the
+Build 42 game classes are Java 25 class files, which JDK 24 and older cannot read.
 
 ```powershell
 git clone https://github.com/OX-nd/SmartTextureLeakFix.git
@@ -97,11 +97,8 @@ Optional parameters: `-Jdk <path>`, `-GameRoot <ProjectZomboid folder>`,
 The script compiles `Fix.java` against your own `projectzomboid.jar` and `ZombieBuddy.jar`,
 writes `42/media/java/client/SmartTextureLeakFix.jar` and prints its SHA-256.
 
-- With **JDK 25** the hash is exactly the one in the table above (checked with Eclipse
-  Temurin 25.0.2 and the GraalVM 25.0.4 bundled with the game).
-- JDK 21-24 produce older class-file versions, so the hash differs. That JAR is still your
-  own build of this source; you can use it instead of the Workshop one (copy it over the
-  Workshop JAR and approve the hash it printed).
+With JDK 25 the hash is exactly the one in the table above. Verified with Eclipse Temurin
+25.0.2 and Oracle GraalVM 25.0.4 (the JDK used for verification); both give the same SHA-256.
 
 Manual build without the script (any OS, JDK 25; use `:` instead of `;` on Linux/macOS):
 

@@ -2,7 +2,8 @@
 Rebuild SmartTextureLeakFix.jar from the source file next to this script,
 so you can run your own build instead of the one shipped with the mod.
 
-  1. Install a JDK 21..25 (e.g. Eclipse Temurin, https://adoptium.net).
+  1. Install JDK 25 (e.g. Eclipse Temurin 25, https://adoptium.net). Older JDKs cannot
+     read the Build 42 game classes (Java 25 class files).
   2. Close Project Zomboid, then right-click this file > Run with PowerShell, or:
         powershell -ExecutionPolicy Bypass -File build.ps1 [-Jdk "C:\Program Files\Eclipse Adoptium\jdk-25..."]
   3. The JAR is written to ..\media\java\client\SmartTextureLeakFix.jar and its SHA-256 is
@@ -32,7 +33,7 @@ function Find-Jdk {
     foreach ($c in $candidates) {
         if ((Test-Path (Join-Path $c 'bin\javac.exe')) -and (Test-Path (Join-Path $c 'bin\jar.exe'))) { return $c }
     }
-    throw "No JDK found (need javac.exe + jar.exe). Install Eclipse Temurin 21..25 from https://adoptium.net or pass -Jdk <path>."
+    throw "No JDK found (need javac.exe + jar.exe). Install Eclipse Temurin 25 from https://adoptium.net or pass -Jdk <path>."
 }
 
 if (-not $ZombieBuddyJar) {
